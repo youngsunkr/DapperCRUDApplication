@@ -1,0 +1,38 @@
+﻿<Window x:Class="DapperCRUDApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DapperCRUDApplication"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Margin="0,0,-31,-189">
+        <DataGrid x:Name="studentDataGrid" x:Uid="employeeDataGrid" SelectionMode="Single" Height="auto" MaxHeight="300"  HorizontalAlignment="Left" Margin="62,140,25,214" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" x:Name="id" IsReadOnly="True" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" x:Name="name" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Marks}" Header="Marks" x:Name="city" Width="Auto"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Edit">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Button Content="Edit" Click="Edit_Click" CommandParameter="{Binding id}"></Button>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Button Content="Delete" Click="Delete_Click" ></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="143,34,0,0" Name="txtName"/>
+        <Label Grid.ColumnSpan="2" Content="Name:" HorizontalAlignment="Left" Margin="48,34,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtName}"/>
+        <Label Grid.ColumnSpan="2" Content="Marks:" HorizontalAlignment="Left" Margin="52,68,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtMarks}"/>
+        <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="143,68,0,0" x:Name="txtMarks"/>
+        <Button x:Name="btnsubmit" Grid.ColumnSpan="2" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="109,100,0,0" Click="InsertOrUpdateStudent"/>
+    </Grid>
+</Window>
