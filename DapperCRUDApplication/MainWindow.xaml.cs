@@ -79,7 +79,7 @@ namespace DapperCRUDApplication
             using (var connection = new SqlConnection(sqlConnectionString))
             {
                 connection.Open();
-                students = connection.Query<Student>("Select Id, Name, Marks from Student").ToList();
+                students = connection.Query<Student>("Select Id, Name, Marks from tbl_dapper_Student").ToList();
                 connection.Close();
             }
             return students;
@@ -91,7 +91,7 @@ namespace DapperCRUDApplication
             using (var connection = new SqlConnection(sqlConnectionString))
             {
                 connection.Open();
-                var affectedRows = connection.Execute("Insert into Student (Name, Marks) values (@Name, @Marks)", new { Name = student.Name, Marks = student.Marks });
+                var affectedRows = connection.Execute("Insert into tbl_dapper_Student (Name, Marks) values (@Name, @Marks)", new { Name = student.Name, Marks = student.Marks });
                 connection.Close();
                 return affectedRows;
             }
@@ -103,7 +103,7 @@ namespace DapperCRUDApplication
             using (var connection = new SqlConnection(sqlConnectionString))
             {
                 connection.Open();
-                var affectedRows = connection.Execute("Update Student set Name = @Name, Marks = @Marks Where Id = @Id", new { Id = studentId, Name = txtName.Text, Marks = txtMarks.Text });
+                var affectedRows = connection.Execute("Update tbl_dapper_Student set Name = @Name, Marks = @Marks Where Id = @Id", new { Id = studentId, Name = txtName.Text, Marks = txtMarks.Text });
                 connection.Close();
                 return affectedRows;
             }
@@ -115,7 +115,7 @@ namespace DapperCRUDApplication
             using (SqlConnection connection = new SqlConnection(sqlConnectionString))
             {
                 connection.Open();
-                var affectedRows = connection.Execute("Delete from Student Where Id = @Id", new { Id = studentId });
+                var affectedRows = connection.Execute("Delete from tbl_dapper_Student Where Id = @Id", new { Id = studentId });
                 connection.Close();
                 return affectedRows;
             }
