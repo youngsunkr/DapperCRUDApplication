@@ -23,7 +23,7 @@ namespace DapperCRUDApplication
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string sqlConnectionString = @"Data Source = MS-PAWANTIWARI\SQLEXPRESS;initial catalog=MCS;user id=sa;password=icreon123#";
+        private string sqlConnectionString = @"Data Source = .;initial catalog=JarvisEF;user id=sa;password=1";
         int studentId;
         public MainWindow()
         {
